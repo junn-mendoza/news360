@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\DataTransferObjects\BannerSliderDTO;
 use Illuminate\Http\Request;
 use App\Http\Resources\BannerResource;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -18,14 +19,10 @@ class BannerSliderResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'Slider' => BannerSliderComponentResource::collection($this->whenLoaded('components') ),
-            // 'Sliders' => 
-            // [
-            //     BannerSliderComponentResource::collection($this->whenLoaded('components') ),
-            // ]
-            //'files' => FileResource::collection($this->components->pluck('file')->flatten()),
+            BannerSliderDTO::fromResource(
+                $this,
+                BannerSliderComponentResource::collection($this->whenLoaded('components') )
+            )           
         ];
     }
 }

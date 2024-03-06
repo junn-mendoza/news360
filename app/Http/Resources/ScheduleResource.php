@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\DataTransferObjects\ScheduleDTO;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -15,13 +16,10 @@ class ScheduleResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'day' => $this->day,
-            'start_time' => $this->start_time,
-            'end_time' => $this->end_time,
-            'title' => $this->title,
-            'slug' => $this->slug,
-            'file' => new FileResource($this->livestreamLink->filesRelatedMorph->file),
+            ScheduleDTO::fromResource(
+                $this,
+                FileResource::make($this->livestreamLink->filesRelatedMorph->file)
+            )
         ];
     }
 }

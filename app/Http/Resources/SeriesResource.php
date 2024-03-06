@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\DataTransferObjects\SeriesDTO;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -14,23 +15,11 @@ class SeriesResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
-            'id' => $this->id,
-            'title' => $this->title,
-            'description' => $this->description,
-            'slug' => $this->slug,
-            'director' => $this->director,
-            'producer' => $this->producer,
-            'ratings' => $this->ratings,
-            'timeslot' => $this->timeslot,
-            'url' => $this->url,
-            'location' => $this->location,
-            'genre' => $this->genre,
-            'name' => $this->name,
-            'subtitle' => $this->subtitle,
-            'playlist' => $this->playlist,
-            'files' => FileResource::collection($this->whenLoaded('files')),
-
+        return [ 
+            SeriesDTO::fromResource(
+                $this,
+                FileResource::collection($this->whenLoaded('files'))
+            )
         ];
     }
 }
