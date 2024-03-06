@@ -110,7 +110,7 @@ return [
     */
 
     'faker_locale' => 'en_US',
-
+    'test_port' => env('TEST_PORT','8000'),
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
@@ -168,6 +168,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ArticleServiceProvider::class,
     ])->toArray(),
 
     /*

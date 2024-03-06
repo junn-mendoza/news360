@@ -1,18 +1,22 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Factories;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DatabaseSeeder extends Seeder
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
+ */
+class CategoryFactory extends Factory
 {
     /**
-     * Seed the application's database.
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
      */
-    public function run(): void
+    public function definition(): array
     {
-        $categories = [
+        return [
             ['name'=>'International', 'order'=>1, 'showmenu'=>true],
             ['name'=>'Provincial', 'order'=>1, 'showmenu'=>true],
             ['name'=>'Sports', 'order'=>1, 'showmenu'=>true],
@@ -26,17 +30,9 @@ class DatabaseSeeder extends Seeder
             ['name'=>'Breaking News', 'order'=>1, 'showmenu'=>true],
             ['name'=>'Technology', 'order'=>1, 'showmenu'=>true],
             ['name'=>'News Programs', 'order'=>1, 'showmenu'=>true],
+
+
+        
         ];
-
-        foreach ($categories as $category) {
-            \App\Models\Category::create($category);
-        }
-
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }

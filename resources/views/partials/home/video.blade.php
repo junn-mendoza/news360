@@ -1,0 +1,1 @@
+<div class=''><img src="{{ asset('assets/images/1920x1060.jpg') }}" /></div>
