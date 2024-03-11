@@ -1,5 +1,5 @@
 <div
-      class='bg-black'
+      class='bg-transparent'
     >
       <div class='grid grid-cols-1 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-3'>
         <div class='grid grid-cols-1  text-white dark:text-gray-500'>

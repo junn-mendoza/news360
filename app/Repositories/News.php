@@ -18,7 +18,6 @@ class News extends Base
         $news = ArticleResource::collection($query);
         $data['LATESTNEWS'] = $news->splice(0, 25);
         $data['OTHERNEWS'] = $news->splice(0, 25);
-        $data['TOPNEWS'] = $news;
-      
+        $data['TOPNEWS'] = $news;      
     }
 }

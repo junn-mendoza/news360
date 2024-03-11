@@ -1,3 +1,107 @@
+ :root {
+--swiper-pagination-color: #FFF;
+--swiper-pagination-bullet-width: 25px;
+--swiper-pagination-bullet-height: 2px;
+--swiper-pagination-bullet-size: auto;
+--swiper-pagination-bullet-inactive-color: #FFF;
+--swiper-pagination-bullet-inactive-opacity: 0.5;
+--swiper-pagination-bullet-opacity: 1;
+--swiper-pagination-bullet-horizontal-gap: 4px;
+--swiper-pagination-bullet-vertical-gap: 6px;
+--swiper-pagination-bullet-border-radius: 0px;
+--swiper-pagination-right: 8px;
+--swiper-pagination-left: auto;
+--swiper-pagination-bottom: 50px;
+}
+
+/*--swiper-pagination-left: auto;
+--swiper-pagination-right: 8px;
+--swiper-pagination-top: 50px;*/
+
+.swiper-pagination {
+    /* --swiper-pagination-right: auto;
+    --swiper-pagination-left: 8px;
+    --swiper-pagination-width: auto; */
+    width: auto !important;
+    right:5px;
+    text-align: right;
+    margin-right:20px;
+    
+  } 
+  
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    background: linear-gradient(180deg, rgba(219,219,219,1) 0%, rgba(235,235,237,1) 20%, rgba(255,255,255,1) 100%);
+}
+
+#muteToggle {
+    cursor: pointer
+}
+.overlay-video {
+    background: transparent;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(78,78,78,0.5) 71%, rgba(0,0,0,1) 100%);
+}
+
+.overlay-black {
+    background: transparent;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(78,78,78,0.5) 71%, rgba(0,0,0,1) 100%);
+}
+
+.bannner-logo {
+    width:90%
+}
+
+.sound {
+    width:60px;
+    height:60px;
+    z-index: 60;
+    position: absolute;
+    stroke: white;
+    bottom:70px;
+    right:15px;
+}
+
+.hide {
+    display: none
+}
+
+.arrow {
+    cursor: pointer;
+}
+
+.bounce-left {
+    border-width: 8px 0px 8px 0;
+    border-color: transparent transparent transparent;
+}
+
+.bounce-right {
+    border-width: 8px 0 8px 0px;
+    border-color: transparent transparent transparent ;
+}
+
+
+.bounce-left:hover {
+    animation: bounceLeft 1s infinite;
+}
+
+.bounce-right:hover {
+    animation: bounceRight 1s infinite;
+}
+
+@keyframes bounceLeft {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-8px); }
+}
+
+@keyframes bounceRight {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(8px); }
+}
+
+ 
+.othernews-wrapper, .latestnews-wrapper, .program-wrapper, .series-wrapper {
+    transform: scale(1);
+}

@@ -20,6 +20,7 @@ class ProgramDTO
         public readonly ?string $name,
         public readonly ?string $character,
         public readonly ?string $playlist,
+        public readonly bool $enabled,
         public readonly JsonResource $files// Change this to Collection to handle multiple files
     ) {
     }
@@ -41,6 +42,7 @@ class ProgramDTO
             name: $resource->name,
             character: $resource->character,
             playlist: $resource->playlist,
+            enabled: (bool) $resource->enabled,
             files: $files
         );
     }

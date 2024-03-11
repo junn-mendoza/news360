@@ -18,4 +18,15 @@ class Live extends Model
                 ->where('related_type', 'api::live.live');
        
     }
+
+    /**
+     * Scope a query to only include live streams where streaming is true.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeStreaming($query)
+    {
+        return $query->where('streaming', true);
+    }
 }

@@ -8,6 +8,7 @@ class Programs extends Base
     public function getDataResource(&$data)
     {
         $programs = Program::with('files')
+            ->where('enabled',1)
             ->orderBy('programs.created_at','desc')
             ->get();
         $data['PROGRAMS']  = ProgramResource::collection($programs);

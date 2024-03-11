@@ -11,6 +11,12 @@ class ScheduleLivestreamLink extends Model
     protected $table = 'schedules_livestream_links';
     public function filesRelatedMorph()
     {
-        return $this->hasOne(FilesRelatedMorph::class, 'related_id', 'live_id');
+        return $this->hasOne(FilesRelatedMorph::class, 'related_id', 'live_id')
+        ->where('related_type', 'api::live.live');;
+    }
+
+    public function live()
+    {
+        return $this->belongsTo(Live::class, 'live_id');
     }
 }

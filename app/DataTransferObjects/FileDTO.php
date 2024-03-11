@@ -10,6 +10,7 @@ class FileDTO
         public readonly string $url,
         public readonly int $width,
         public readonly int $height,
+        public readonly string $mime,
     ){}
 
     public static function fromResource(JsonResource $resource): self
@@ -19,6 +20,7 @@ class FileDTO
             url: $resource->url,
             width: (int) $resource->width,
             height: (int) $resource->height,
+            mime: $resource->mime,
         );
        
     }

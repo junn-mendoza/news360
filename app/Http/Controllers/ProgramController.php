@@ -12,6 +12,7 @@ class ProgramController extends Controller
     {
        
         $programs = Program::with('files')
+            ->where('enabled',1)
             ->orderBy('programs.created_at','desc')
             ->get();
         
