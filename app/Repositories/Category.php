@@ -22,6 +22,7 @@ class Category extends Base
         foreach($catGroup as $key=>$value) {
             $this->newsSlider($key,$value);
         }
+        $this->data['newsSlider']['CATEGORY'] = $catGroup;
         $data = $this->data;
         $ids = $this->ids;
     }
@@ -29,6 +30,9 @@ class Category extends Base
     private function newsSlider($key,$value)
     {
         $query = $this->articleService->getArticles(3, $value);
+        // if($key =='INTERNATIONAL') {
+        //     dd($query);
+        // }
         $category = ArticleResource::collection($query);
         $this->data['newsSlider'][$key] = $category;
         $tmp = $category->pluck('id')->toArray();

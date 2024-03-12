@@ -1,5 +1,5 @@
 <div class='latestnews-wrapper'>
-    <div class=' font-montserrat text-3xl'>LATEST NEWS</div>
+    <div class=' font-fraunces text-3xl'>LATEST NEWS</div>
     <div class="swiper home-latestnews relative">
         <div class="swiper-wrapper">
         @foreach($data['LATESTNEWS'] as $latestnews)

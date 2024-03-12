@@ -15,5 +15,6 @@ class Live extends Base
         );
         
         $data['isLive'] = $liveProgramProvider->isLive();
+        $data['isStreaming'] = $liveProgramProvider->isStreaming();
     }
 }

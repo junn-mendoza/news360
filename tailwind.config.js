@@ -9,6 +9,7 @@ export default {
     extend: {
       fontFamily: {
         'montserrat': ['Montserrat', 'sans-serif'],
+        'fraunces': ['Fraunces'],
         // Add more font families as needed
       }
     },

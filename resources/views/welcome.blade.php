@@ -2,43 +2,54 @@
 
 @section('content')
 
-<div class='container mx-auto'>
+
     <!-- row 1 section  -->
-    <div class='flex space-x-3'>
-        <div class='w-2/3'>
+    <div class='flex space-x-3 px-3'>
+        <div class='w-3/4'>
             @include('partials.home.video')
         </div>
-        <div class='bg-transparent w-1/3'>
+        <div class='bg-transparent w-1/4'>
             @include('partials.home.topnews')
         </div>
     </div>
+<div class='container mx-auto'>
     <div class='flex flex-col'>
-    <!-- row 2 section  promo-->
-    @include('partials.home.promo')
-    <!-- row 3 section  banner-->
-    @include('partials.home.banner')
+    
+   
+    <div class='mt-4'>
     <!-- row 4 section  live-->
     @include('partials.home.live')
-    <div class='mt4'>
+    </div>
+    <div class='mt-4'>
     <!-- row 5 section  Schedule-->
         @include('partials.home.schedule')
     </div>
-    <div class='mt4'>
+    <div class='mt-4'>
     <!-- row 7 section  Series-->
     @include('partials.home.latestnews')
    </div>
-   <div class='mt4'>
-    <!-- row 7 section  Series-->
-    @include('partials.home.series')
-   </div>
-   <div class='mt4'>
-    <!-- row 6 section  Programs-->
-    @include('partials.home.programs')
     </div>
-    <!-- row 8 section  Category News-->
-    @include('partials.home.category')
-    <!-- row 9 section  Other News-->
-    @include('partials.home.othernews')
+</div>
+   <div class='mt-4 w-full '>
+    <!-- row 3 section  banner-->
+    @include('partials.home.banner')
+    </div>
+<div class='container mx-auto'>  
+    <div class='flex flex-col'>
+        <div class='mt-4'>
+            <!-- row 7 section  Series-->
+            @include('partials.home.series')
+        </div>
+        <div class='mt-4'>
+            <!-- row 6 section  Programs-->
+            @include('partials.home.programs')
+        </div>
+        <!-- row 8 section  Category News-->
+        @include('partials.home.category')
+        <div class='mt-4'>
+        <!-- row 9 section  Other News-->
+        @include('partials.home.othernews')
+        </div>
     </div>
 </div>
 @endsection
@@ -52,5 +63,8 @@
     let programEl = CustomSwiper('.home-programs', 4);
     let latestnewsEl = CustomSwiper('.home-latestnews', 4);
     let othernewsEl = CustomSwiper('.home-othernews', 4);
+    const progressCircle = document.querySelector(".autoplay-progress svg");
+    const progressContent = document.querySelector(".autoplay-progress span");
+    let categoryEl = CategorySwiper('.home-category', 1);
 </script>
 @endpushOnce

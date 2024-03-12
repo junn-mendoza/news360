@@ -1,4 +1,4 @@
-<div class='shadow-md rounded-lg overflow-hidden border-2 border-gray-300 mb-5'>
+<div class='box-border hover:box-content shadow-md hover:shadow-lg rounded-lg overflow-hidden border-2 border-gray-300 mb-5 hover:border-white'>
     @php
     $c=0
     @endphp

@@ -56,8 +56,7 @@ class TestController extends Controller
 
             $liveService = app(LiveService::class); // Resolve the Live repository from the service container
             Live::make()->getDataResource($liveService, $this->data);
-           
-           //dd($this->data['LIVE']);
+          
             //dd(collect($this->data['LIVE'][0])->pluck('files')->toArray()[0]->url); 
             //Live::make()->getDataResource($this->data);
             // $this->data['BANNER'] = $this->bannerService->customizeBanner(

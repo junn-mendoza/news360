@@ -1,5 +1,5 @@
 <div class='program-wrapper'>
-    <div class=' font-montserrat text-3xl'>PROGRAMS</div>
+    <div class=' font-fraunces text-3xl'>PROGRAMS</div>
     <div class="swiper home-programs relative">
         <div class="swiper-wrapper ">
        

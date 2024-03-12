@@ -4,12 +4,12 @@
     <div id='topnews' class="flex h-[525px] flex-col divide-y divide-gray-300 divide-solid overflow-y-scroll scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
             @foreach($data['TOPNEWS'] as $topnews)
             <div class='flex py-3'>
-                <div class='w-2/3 flex flex-col'>
-                    <div class='font-montserrat text-sm text-gray-600 font-bold px-2'>{{ $topnews->title }}</div>
-                    <div class=' line-clamp-2 space-x-3 text-gray-500 font-montserrat text-sm pt-2 mb-3'>
+                <div class='w-2/3 flex flex-col justify-between'>
+                    <div class=' line-clamp-3 font-fraunces text-lg text-gray-600 font-bold px-2 h-full mr-2'>{{ $topnews->title }}</div>
+                    <!--<div class=' line-clamp-2 space-x-3 text-gray-500 font-montserrat text-sm pt-2 mb-3'>
                         {!! $topnews->description !!}
-                    </div>
-                    <div class='flex justify-between space-x-2 font-montserrat text-xs pt-2 px-2'>
+                    </div>-->
+                    <div class='flex justify-between space-x-2 font-montserrat text-xs px-2 pt-2'>
                         <div class='flex space-x-2'>
                             <div class=' stroke-slate-100'><img src="{{ asset('assets/ref/time.svg')}}" width=16 height=16/></div>
                             <div class='font-montserrat text-xs'>5 minutes ago</div>

@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
 class LiveService
 {
     protected $isLive = false;
+    protected $isStreaming = false;
     public function getLiveProgram()
     {
         // Create a new Carbon instance for UTC timezone
@@ -37,29 +38,36 @@ class LiveService
             ->orderBy('start_time')           
             ->limit(1)
             ->get();
-    $this->isLive = ($schedules->count()>0 ? true: false);
-           
-    $live_id = $schedules->count()>0 ? $schedules[0]->id : null;
+        // Check if livestreamLink.live exists for each schedule
+            foreach ($schedules as $schedule) {
+                if ($schedule->livestreamLink->live !== null) {
+                    // livestreamLink.live exists for this schedule
+                    $this->isStreaming = true;
+                } 
+            }    
+        $this->isLive = ($schedules->count()>0 ? true: false);
+        
+        $live_id = $schedules->count()>0 ? $schedules[0]->id : null;
   
-    $schedulesMore = Schedule::where('day',$currentDay)
-        ->when($live_id !== null, function ($query) use ($live_id) {
-            $query->where('id', '<>', $live_id);
-        })
-        ->with(['livestreamLink.filesRelatedMorph.file', 'livestreamLink.live' => function ($query) {
-            // Apply the scopeStreaming scope to the live relationship
-            $query->streaming();
-        }])
-        ->where(function ($query) use ($currentManilaTime) {
-            $query->where('start_time', '<=', $currentManilaTime)
-                ->where('end_time', '>=', $currentManilaTime)
-                ->orWhere('start_time', '>', $currentManilaTime);
-        })
-        ->whereHas('liveStreamLink')
-        ->orderBy('start_time')           
-        ->limit($countLive-($schedules->count()))
-        ->get();
+        $schedulesMore = Schedule::where('day',$currentDay)
+            ->when($live_id !== null, function ($query) use ($live_id) {
+                $query->where('id', '<>', $live_id);
+            })
+            ->with(['livestreamLink.filesRelatedMorph.file', 'livestreamLink.live' => function ($query) {
+                // Apply the scopeStreaming scope to the live relationship
+                $query->streaming();
+            }])
+            ->where(function ($query) use ($currentManilaTime) {
+                $query->where('start_time', '<=', $currentManilaTime)
+                    ->where('end_time', '>=', $currentManilaTime)
+                    ->orWhere('start_time', '>', $currentManilaTime);
+            })
+            ->whereHas('liveStreamLink')
+            ->orderBy('start_time')           
+            ->limit($countLive-($schedules->count()))
+            ->get();
     
-    $schedules = $schedules->concat($schedulesMore);
+        $schedules = $schedules->concat($schedulesMore);
    
     //dd($schedulesMore->count());
   //dd($nextDay);
@@ -96,5 +104,9 @@ class LiveService
 
     public function isLive() {
         return $this->isLive;
+    }
+
+    public function isStreaming() {
+        return $this->isStreaming;
     }
 }

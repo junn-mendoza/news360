@@ -1,5 +1,5 @@
 <div class='series-wrapper'>
-    <div class=' font-montserrat text-3xl'>SERIES</div>
+    <div class=' font-fraunces text-3xl'>SERIES</div>
     <div class="swiper home-series relative">
         <div class="swiper-wrapper">
         @foreach($data['SERIES'] as $series)
