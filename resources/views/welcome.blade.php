@@ -4,7 +4,7 @@
 
 
     <!-- row 1 section  -->
-    <div class='flex space-x-3 px-3'>
+    <div class='flex space-x-3 px-3 max-w-[2000px] mx-auto'>
         <div class='w-3/4'>
             @include('partials.home.video')
         </div>
@@ -30,7 +30,7 @@
    </div>
     </div>
 </div>
-   <div class='mt-4 w-full '>
+   <div class='mt-4 w-full max-w-[2000px] mx-auto'>
     <!-- row 3 section  banner-->
     @include('partials.home.banner')
     </div>
@@ -56,6 +56,7 @@
 
 @pushOnce('js')
 
+<script src="{{ asset('assets/js/main.js') }}"></script>
 <script src="{{ asset('assets/js/home.js') }}"></script>
 <script src="{{ asset('assets/js/swiper.js') }}"></script>
 <script>

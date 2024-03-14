@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Tools\Helper;
 
 class Article extends Model
 {
@@ -38,7 +39,6 @@ class Article extends Model
        
     }
 
-    
      /**
      * Find an article by its slug.
      *

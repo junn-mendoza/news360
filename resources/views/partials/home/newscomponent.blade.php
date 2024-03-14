@@ -16,13 +16,12 @@
     <div class='flex flex-col px-2 py-2 items-center'>
         <div class='font-montserrat line-clamp-2 min-h-14'>{{ $component->title}}</div>
         <div class='flex w-full items-center'>
-            <div class='flex space-x-2 w-full'>
-                <div class=' stroke-slate-100'><img src="{{ asset('assets/ref/time.svg')}}" width=16 height=16 /></div>
-                <div class='font-montserrat text-xs '>5 minutes ago</div>
-            </div>
+            
+            @include('partials.components.timewithicon', [$dateAndTime = $component->date])
+            
 
             <div class='flex-0 w-[70px] h-[40px] items-center pt-3'>
-                <img src="{{ asset('assets/images/logo.svg') }}"  />
+                <img src="{{ asset('assets/images/update.svg') }}"  />
             </div>
         </div>
     </div>

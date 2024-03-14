@@ -2,7 +2,7 @@
     <div class='w-[60%]'>
         <div class='w-full overflow-hidden rounded-lg shadow-lg border border-1 border-gray-300 relative'>
             @if($data['isLive'])
-                @include('partials.home.overlayblack')
+                @include('partials.components.overlayblack')
                 @include('partials.home.liveicon')
            
                 

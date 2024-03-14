@@ -33,6 +33,27 @@ function CategorySwiper (classSwiper, slideView) {
     
 }
 
+function NewsFeaturedSwiper (classSwiper, slideView) {
+  return  new Swiper(classSwiper, {
+      slidesPerView: slideView,
+      autoplay: {
+          delay: 5000,
+          disableOnInteraction: false
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true
+        },
+      
+      on: {
+          autoplayTimeLeft(s, time, progress) {
+            progressCircle.style.setProperty("--progress", 1 - progress);
+            progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+          }
+        }
+  });
+  
+}
 
 
 

@@ -8,14 +8,14 @@ use App\Models\Article;
 class ArticleService
 {
     public function getArticles($limit = null, $category_ids = null, $ids = null)
-    {
-        
+    {        
         // Start with the base query
         $query = Article::query();
 
         // Apply eager loading for the 'files' relationship
         $query->with(['files','categories']);
 
+        $query->whereHas('files');
         // Check if $categories is provided and process accordingly
         if (!is_null($category_ids)) {
             

@@ -6,8 +6,7 @@
         @foreach($data['PROGRAMS'] as $program)
             <div class="swiper-slide">
                 <!--start here-->
-                @include('partials.home.slidercomponent', ['component' => $program])
-                
+                @include('partials.home.slidercomponent', ['component' => $program, 'logo' => 'program'])
                 <!--end here--> 
             </div>
         @endforeach

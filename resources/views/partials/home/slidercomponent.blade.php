@@ -15,6 +15,6 @@
 @endforeach
         <div class='flex justify-between px-2 py-2 items-center'> 
             <div class='font-montserrat'>{{ $component->title}}</div>
-            <div class='w-[70px] h-[40px] items-center pt-3'><img src="{{ asset('assets/images/logo.svg') }}"/></div>
+            <div class='w-[70px] h-[40px] items-center pt-3'><img src="{{ asset('assets/images/'.$logo.'.svg') }}"/></div>
         </div>
 </div>

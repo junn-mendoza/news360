@@ -7,9 +7,7 @@ class Helper {
     {
         return CategoryColor::getColor(
             Str::replace(' ','',
-            
                 Str::upper($name)
-                
             )
         );
     }

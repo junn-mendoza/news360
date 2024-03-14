@@ -12,7 +12,7 @@
                     <div class='flex justify-between space-x-2 font-montserrat text-xs px-2 pt-2'>
                         <div class='flex space-x-2'>
                             <div class=' stroke-slate-100'><img src="{{ asset('assets/ref/time.svg')}}" width=16 height=16/></div>
-                            <div class='font-montserrat text-xs'>5 minutes ago</div>
+                            @include('partials.components.time', [$dateAndTime = $topnews->date])
                         </div>    
                         <div class='pr-2'>
                             <!--{{ $topnews->categories[0] }}-->

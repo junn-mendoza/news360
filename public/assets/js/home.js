@@ -1,3 +1,5 @@
+
+
 const toggleMute = () => {
     soundIndex = swiperEl.activeIndex;
     video = document.querySelector('#v' + soundIndex);
@@ -72,6 +74,7 @@ const checkEndedHandler = (e) => {
     }
     swiperEl.swiper.slideNext()
 }
+// Function to calculate and display time difference
 
 window.onload = (event) => {
     let elem = document.querySelector('.overlay-video');
@@ -89,5 +92,9 @@ window.onload = (event) => {
         
         
     }
+    // setTimeout(()=>{
+    //     updateTimeDifference();
+    // }, 5000)
     
+   
 };
