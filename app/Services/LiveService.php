@@ -38,7 +38,7 @@ class LiveService
             ->orderBy('start_time')           
             ->limit(1)
             ->get();
-        // Check if livestreamLink.live exists for each schedule
+   
             foreach ($schedules as $schedule) {
                 if ($schedule->livestreamLink->live !== null) {
                     // livestreamLink.live exists for this schedule
@@ -69,24 +69,15 @@ class LiveService
     
         $schedules = $schedules->concat($schedulesMore);
    
-    //dd($schedulesMore->count());
-  //dd($nextDay);
-    //     $allSchedule = $schedules->concat($scheduleMore ?? new Collection());
-    //     $next = null; 
         if($schedules->count() < $countLive) {
-           // dd($countLive - $schedules->count());
+   
             $next = Schedule::where('day',$nextDay)
-                // ->with([
-                //     'livestreamLink.filesRelatedMorph.file', 
-                //     'livestreamLink.live' ])
             ->with(['livestreamLink.filesRelatedMorph.file', 'livestreamLink.live' => function ($query) {
                 // Apply the scopeStreaming scope to the live relationship
                $query->streaming();
            }])
             ->where(function ($query) use ($currentManilaTime) {
                 $query->where('start_time', '<=', $currentManilaTime);
-                    //->where('end_time', '>=', $currentManilaTime)
-                    //->orWhere('start_time', '>', $currentManilaTime);
             })
             ->whereHas('liveStreamLink')
             ->orderBy('start_time')           
@@ -97,9 +88,7 @@ class LiveService
             
         }
         
-        
-       // dd($schedules);
-        return $schedules;
+       return $schedules;
     }
 
     public function isLive() {

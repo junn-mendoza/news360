@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use App\Tools\Helper;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Article extends Model
 {
@@ -15,6 +17,7 @@ class Article extends Model
         'media',
         'url',
         'content',
+        'date',
     ];
     /**
      * Get the categories associated with the article filtered by category IDs if provided.
@@ -34,11 +37,40 @@ class Article extends Model
     public function files()
     {
         return $this->belongsToMany(
-            File::class, 'files_related_morphs','related_id','file_id')
+            File::class, 
+            'files_related_morphs',
+            'related_id','file_id')
                 ->where('related_type', 'api::article.article');
        
     }
 
+    public function scopeOrderedByIdArray(Builder $query, array $idArray)
+    {
+        // works in mysql
+        // $idString = implode(',', $idArray);
+        // return $query->whereIn('id', $idArray)
+        //     ->orderByRaw(DB::raw('FIELD(id, ?)'), [$idString]);
+    
+        // works in postgres
+        return $query->whereIn('id',  $idArray)
+            ->orderByRaw("CASE id " . 
+                implode(" ", array_map(function($id, $index) {
+                    return "WHEN " . $id . " THEN " . $index;
+                },  $idArray, range(1, count( $idArray)))) .
+            " END");
+           
+    }
+
+     /**
+     * Convert the date to formatted Value
+     *  example 10 mins 3 sec ago
+     */
+    public function getTImeStringAttribute()
+    {
+          
+        return Helper::updateTimeDifference($this->date);
+    }
+    
      /**
      * Find an article by its slug.
      *

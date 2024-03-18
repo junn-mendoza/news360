@@ -18,6 +18,13 @@ class Category extends Model
         return $this->belongsToMany(Article::class, 'article_categories');
     }
 
+    public function latestArticle()
+    {
+        return $this->belongsToMany(Article::class, 'article_categories')
+            ->orderByDesc('articles.date')
+            ->limit(1);
+    }
+    
     public function getColorAttribute()
     {
         return Helper::getColor($this->name);

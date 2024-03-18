@@ -1,7 +1,7 @@
 <div class='bg-white flex flex-col p-2 rounded-2xl overflow-hidden drop-shadow-md'>
     <div class='font-montserrat border-b-2 pb-2 text-xl font-semibold topnewsHeader pl-3'>TOP NEWS</div>
     <!--start-->
-    <div id='topnews' class="flex h-[525px] flex-col divide-y divide-gray-300 divide-solid overflow-y-scroll scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+    <div id='topnews' class="flex h-[833px] flex-col divide-y divide-gray-300 divide-solid overflow-y-scroll scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
             @foreach($data['TOPNEWS'] as $topnews)
             <div class='flex py-3'>
                 <div class='w-2/3 flex flex-col justify-between'>
@@ -12,7 +12,7 @@
                     <div class='flex justify-between space-x-2 font-montserrat text-xs px-2 pt-2'>
                         <div class='flex space-x-2'>
                             <div class=' stroke-slate-100'><img src="{{ asset('assets/ref/time.svg')}}" width=16 height=16/></div>
-                            @include('partials.components.time', [$dateAndTime = $topnews->date])
+                            @include('partials.components.time', [$dateAndTime = $topnews->date, $timeString = $topnews->time_string])
                         </div>    
                         <div class='pr-2'>
                             <!--{{ $topnews->categories[0] }}-->

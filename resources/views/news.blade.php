@@ -2,7 +2,7 @@
 
 
 @section('content')
-
+   
 <div class=' bg-[#202d5f] border-t-4 border-white'>
         <div class='container mx-auto'>
             <div class='flex flex-col py-5'>

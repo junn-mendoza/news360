@@ -22,11 +22,7 @@ class BannerSliderComponent extends Model
            
     }
 
-    // public function details()
-    // {
-    //     return $this->hasOne(BannerSliderDetail::class,'entity_id');
-    // }
-    
+       
     public function component()
     {
         return $this->belongsTo(BannerSliderDetail::class, 'component_id');

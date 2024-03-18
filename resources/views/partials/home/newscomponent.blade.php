@@ -15,9 +15,9 @@
     @endforeach
     <div class='flex flex-col px-2 py-2 items-center'>
         <div class='font-montserrat line-clamp-2 min-h-14'>{{ $component->title}}</div>
-        <div class='flex w-full items-center'>
+        <div class='flex w-full items-center justify-between'>
             
-            @include('partials.components.timewithicon', [$dateAndTime = $component->date])
+            @include('partials.components.timewithicon', [$dateAndTime = $component->date, $timeString = $component->TimeString])
             
 
             <div class='flex-0 w-[70px] h-[40px] items-center pt-3'>

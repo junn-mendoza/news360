@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\CategoryColor;
+use ReflectionClass;
+use App\Tools\Helper;
+use ReflectionProperty;
 use App\Models\Category;
 use App\Repositories\News;
 use App\Enums\CategoryEnum;
 use Illuminate\Support\Str;
+use App\Enums\CategoryColor;
 use Illuminate\Http\Request;
 use App\Services\ArticleService;
 use App\Http\Resources\CategoryResource;
@@ -24,18 +27,23 @@ class NewsController extends Controller
         $this->articleService = $articleService;
     }
     public function index() {
-        
+
         $this->ids = [7632,7630,7628,7631,6946];
+
+        // $this->data['MISSED'] = News::make($this->articleService)
+        // ->getDataArticle($this->data, $this->ids, 10);
+
+        // $test = $this->articleService->getLatestArticlesByCategories(100, $this->ids);
+        // dd($test);
         //dd(CategoryColor::getColor( Str::replace(' ','',Str::upper('National News'))) );
         $category = Category::where('showmenu',1)->get();
         $this->data['CATEGORY'] = CategoryResource::collection($category);
 
         // breaking news 5
         $this->data['BREAKING_NEWS'] = News::make($this->articleService)
-            ->getDataArticle($this->data,$this->ids,5, CategoryEnum::BREAKING_NEWS);
+            ->getDataArticle($this->data,$this->ids,3, CategoryEnum::BREAKING_NEWS);
 
-        //dd($this->data['BREAKING_NEWS']);
-
+         
         $this->data['ENTERTAINMENT'] = News::make($this->articleService)
             ->getDataArticle($this->data,$this->ids,25, CategoryEnum::ENTERTAINMENT);
         
@@ -45,6 +53,36 @@ class NewsController extends Controller
         $this->data['INTERNATIONAL'] = News::make($this->articleService)
             ->getDataArticle($this->data,$this->ids,25, CategoryEnum::INTERNATIONAL);
 
+        $infoBlock = [];
+        $key = 'Technology';
+        $infoBlock[$key] = (object)[
+            'title' => $key,
+            'key' => $key,
+            'data' => News::make($this->articleService)
+                ->getDataArticle($this->data,$this->ids,7,  Helper::getCategoryValue($key)),
+            'color' =>  '#5b21b6',   
+        ];  
+
+        $key = 'Business';
+        $infoBlock[$key] = (object)[
+            'title' => $key,
+            'key' => $key,
+            'data' => News::make($this->articleService)
+                ->getDataArticle($this->data,$this->ids,7, Helper::getCategoryValue($key)),
+            'color' => '#be123c',           
+        ]; 
+
+        $key = 'Health';
+        $infoBlock[$key] = (object)[
+            'title' => $key,
+            'key' => $key,
+            'data' => News::make($this->articleService)
+                ->getDataArticle($this->data,$this->ids,7,  Helper::getCategoryValue($key)),
+            'color' =>  '#256d26',   
+        ]; 
+        $this->data['CATEGORY_BLOCK'] = $infoBlock;
+        //dd($this->data['CATEGORY_BLOCK']);
+        // $this->data['CATEGORY_BLOCK']     
         $this->data['TECHNOLOGY'] = News::make($this->articleService)
             ->getDataArticle($this->data,$this->ids,7, CategoryEnum::TECHNOLOGY);
         
@@ -61,7 +99,7 @@ class NewsController extends Controller
                 CategoryEnum::NATIONAL_NEWS,
             ];
         $this->data['FEATURED'] = News::make($this->articleService)
-            ->groupOf4($this->ids, $group);
+        ->getDataArticle($this->data,$this->ids,4, $group);
         
         //dd($this->data['FEATURED']);    
         $this->data['TIDBITS'] = News::make($this->articleService)
@@ -73,7 +111,7 @@ class NewsController extends Controller
                 CategoryEnum::PROVINCIAL,
             ];
         $this->data['MOREARTICLES_1'] = News::make($this->articleService)
-            ->groupOf4($this->ids, $group);
+            ->getDataArticle($this->data,$this->ids,4,$group);
             $group = [
                 CategoryEnum::ENTERTAINMENT,
                 CategoryEnum::MUSIC,
@@ -81,54 +119,11 @@ class NewsController extends Controller
                 CategoryEnum::HEALTH,
             ];
         $this->data['MOREARTICLES_2'] = News::make($this->articleService)
-            ->groupOf4($this->ids, $group);
+            ->getDataArticle($this->data,$this->ids,4,$group);
         
-            $group = [
-               
-                CategoryEnum::MUSIC,
-                CategoryEnum::TECHNOLOGY,
-                CategoryEnum::HEALTH,
-                CategoryEnum::BUSINESS,
-                CategoryEnum::EXCLUSIVE,
-                CategoryEnum::INTERNATIONAL,
-                CategoryEnum::NATIONAL_NEWS,
-                CategoryEnum::OPINION,
-                CategoryEnum::NEWS_PROGRAMS,
-                CategoryEnum::SPORTS,
-                CategoryEnum::ENTERTAINMENT,
-                CategoryEnum::MUSIC,
-                CategoryEnum::TECHNOLOGY,
-                CategoryEnum::HEALTH,
-                CategoryEnum::BUSINESS,
-                CategoryEnum::EXCLUSIVE,
-                CategoryEnum::INTERNATIONAL,
-                CategoryEnum::NATIONAL_NEWS,
-                CategoryEnum::OPINION,
-                CategoryEnum::NEWS_PROGRAMS,
-                CategoryEnum::SPORTS,
-                CategoryEnum::ENTERTAINMENT,
-                CategoryEnum::MUSIC,
-                CategoryEnum::TECHNOLOGY,
-                CategoryEnum::HEALTH,
-                CategoryEnum::BUSINESS,
-                CategoryEnum::EXCLUSIVE,
-                CategoryEnum::INTERNATIONAL,
-                CategoryEnum::NATIONAL_NEWS,
-                CategoryEnum::OPINION,
-                CategoryEnum::NEWS_PROGRAMS,
-                CategoryEnum::SPORTS,
-                CategoryEnum::ENTERTAINMENT,
-                CategoryEnum::MUSIC,
-                CategoryEnum::TECHNOLOGY,
-                CategoryEnum::HEALTH,
-                CategoryEnum::OPINION,
-                CategoryEnum::INTERNATIONAL,
-                CategoryEnum::EXCLUSIVE,
-                CategoryEnum::SPORTS,
-            ];
-        $this->data['MISSED'] = News::make($this->articleService)
-            ->groupOf4($this->ids, $group);
-
+        
+            $this->data['MISSED'] = News::make($this->articleService)
+                ->getDataArticle($this->data, $this->ids, 80);
         //dd( $this->data['MISSED']);
         //dd($this->data['MOREARTICLES']);    
         return view('news',['data' => $this->data]);

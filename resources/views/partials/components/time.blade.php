@@ -1,2 +1,2 @@
-<div class='datetime font-montserrat text-xs' data-time='{{ $dateAndTime }}'></div>
+<div class='datetime font-montserrat text-xs' data-time='{{ $dateAndTime }}'>{{ $timeString }}</div>
   

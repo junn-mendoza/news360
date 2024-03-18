@@ -3,48 +3,61 @@
 
 namespace App\Services;
 
+use ReflectionClass;
 use App\Models\Article;
+use App\Enums\CategoryEnum;
+use App\Models\ArticleCategory;
 
 class ArticleService
 {
+    private function getCategoryList()
+    {
+         // Get all category IDs from the enum excluding 'LIVE' and 'SONA'
+         $category = new CategoryEnum;
+        
+         $categoryList = array_diff(array_values(
+             (new ReflectionClass($category))->getConstants()
+         ), 
+             [CategoryEnum::LIVE, 
+             CategoryEnum::SONA]) ;
+ 
+         $categoryIds = array_diff(array_values($categoryList), 
+             [CategoryEnum::LIVE, 
+             CategoryEnum::SONA]);
+        return $categoryIds;
+    }
+
+    private function getLatestArticlesByCategories($limit = 10, $ids = null, $included = [])
+    {
+         
+        $articleCategory = ArticleCategory::query();    
+
+        $orderIds = $articleCategory
+            ->ByDemand($ids ?? [], $included)
+            ->limit($limit)->get();
+
+        $generateIds = $orderIds->pluck('article_id')->toArray();  
+        return $generateIds;
+    }
+
+
     public function getArticles($limit = null, $category_ids = null, $ids = null)
-    {        
-        // Start with the base query
+    {    
+        
+        $category_ids = !is_null($category_ids) && !is_array($category_ids)
+            ? explode(',', $category_ids) : $category_ids;
+        $orderIds = $this->getLatestArticlesByCategories($limit,$ids,$category_ids);
+       
         $query = Article::query();
 
         // Apply eager loading for the 'files' relationship
-        $query->with(['files','categories']);
+        $query->with(['files','categories'])
+            ->whereHas('files'); 
 
-        $query->whereHas('files');
-        // Check if $categories is provided and process accordingly
-        if (!is_null($category_ids)) {
-            
-            $category_ids = explode(',', $category_ids);
-           
-            // If $categories is an array and not empty, filter articles by categories
-           if (is_array($category_ids) && !empty($category_ids)) {
-                $query->whereHas('categories', function ($query) use ($category_ids) {
-                    
-                    $query->whereIn('categories.id', $category_ids);
-
-                });
-            }
-        }
-
-        if( $ids ) {
-            $query->whereNotIn('id', $ids); 
-        }
-        // Check if $limit is provided and process accordingly
-        if ($limit || $limit > 0) {
-            // If $limit is greater than 0, apply limit to the query
-            $articles = $query->limit($limit);
-        } 
+        $query->OrderedByIdArray($orderIds);
         
-        // Apply order by created_at in descending order
-        $query->orderBy('created_at', 'desc');
-
-        // Fetch the articles
-        $articles = $query->get();
-        return $articles;
+        $article = $query->get();
+ 
+        return $article;
     }
 }

@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class='border-box flex justify-between font-montserrat text-xs px-2 pt-2 pb-2'>
-        @include('partials.components.timewithicon', [$dateAndTime = $component->date])
+        @include('partials.components.timewithicon', [$dateAndTime = $component->date, $timeString = $component->time_string])
           
         <div class='border-box pr-2'>
             <div style='background-color:{{ $component->categories[0]->color }}' class='rounded-full text-white px-3 py-1 '>

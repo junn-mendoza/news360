@@ -25,7 +25,7 @@ class ArticleResource extends JsonResource
                 FileResource::collection($this->whenLoaded('files'))
 
             )
-        ];
+         ];
         
 
     }

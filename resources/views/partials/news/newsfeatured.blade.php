@@ -16,7 +16,7 @@
                         <div class=' line-clamp-2'>{{ $value->title}}</div>
                     </div>
                     <div class='p-3'>
-                        @include('partials.components.timewithicon', [$dateAndTime = $value->date])
+                        @include('partials.components.timewithicon', [$dateAndTime = $value->date, $timeString = $value->time_string,])
                     </div>
                 </div>
                 <!--end here--> 

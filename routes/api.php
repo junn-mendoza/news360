@@ -8,6 +8,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\BannerSliderController;
+use App\Http\Controllers\EntertainmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,6 @@ Route::get('/programs',[ProgramController::class,'index']);
 Route::get('/series',[SeriesController::class,'index']);
 
 Route::get('/schedule',[ScheduleController::class,'index']);
+
+
+Route::get('/entertainments',[EntertainmentController::class,'index']);

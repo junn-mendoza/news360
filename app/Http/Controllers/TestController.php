@@ -34,6 +34,7 @@ class TestController extends Controller
 
     public function index()
     {
+
         Cache::forget('HOMEPAGE');
         if (Cache::has('HOMEPAGE')) {
             $this->data = Cache::get('HOMEPAGE');
@@ -46,7 +47,7 @@ class TestController extends Controller
             ];
             Category::make($this->articleService)
                 ->getDataResource($catGroup, $this->data, $this->ids);
-
+ 
             News::make($this->articleService)
                 ->getDataResource($this->data, $this->ids);
 
@@ -84,25 +85,6 @@ class TestController extends Controller
             'time' => '4:00 - 5:00PM'
         ];
            
-        
-        // $test = $this->data['LIVE'];
-        // foreach($test as $item) {
-        //     foreach(collect($item) as $files) {
-        //         dump($files->files->url);
-        //     }
-        // }
-        // dd(collect($this->data['LIVE'][0])[0]->files->url);
-        //dd($test);
-        //foreach($test as $item) {
-            // foreach($$test[0]['files'] ?? [] as $file) {
-            //     dd($file->url);
-            // }
-             
-        //}
-        //dd($test->files);
-        //son_decode(json_encode(
-        //return response()->json( $this->data['LIVE'],200);
-        //dd($this->data['BANNER']);
         return view('welcome', ['data' => $this->data] );
     }
 }
