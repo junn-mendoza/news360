@@ -55,6 +55,22 @@ function NewsFeaturedSwiper (classSwiper, slideView) {
   
 }
 
+function AutoSwiper (classSwiper) {
+  return  new Swiper(classSwiper, {
+      slidesPerView: "auto",
+      spaceBetween: 10,
+      centeredSlides: true,
+      pagination: {
+          el: ".swiper-pagination",
+          clickable: true
+      },
+      
+      //initialSlide: 4, //optional
+      //slidesPerGroup: 2, // if set, it helps it to align in the left if set to 1
+  });
+  
+}
+
 
 
 

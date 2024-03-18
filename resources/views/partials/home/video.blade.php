@@ -7,7 +7,7 @@
             @php
             $c=0
             @endphp
-            @foreach($data['BANNER'] as $banner)
+            @foreach($banners as $banner)
             <!-- Slides -->
             <div class="swiper-slide">
                 <div class='overlay-video absolute h-full w-full right-0 top-0 bottom-0 left-0 z-20'></div>

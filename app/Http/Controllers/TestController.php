@@ -85,6 +85,6 @@ class TestController extends Controller
             'time' => '4:00 - 5:00PM'
         ];
            
-        return view('welcome', ['data' => $this->data] );
+        return view('welcome', ['data' => $this->data, 'banners' =>  $this->data['BANNER']] );
     }
 }

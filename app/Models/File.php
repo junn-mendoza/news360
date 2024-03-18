@@ -35,5 +35,10 @@ class File extends Model
         return $this->morphTo();
     }
 
+    public function getSwiperAttribute()
+    {
+        return (int)(($this->width*600)/$this->height);
+        
+    }
     
 }
