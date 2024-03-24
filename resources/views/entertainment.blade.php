@@ -8,7 +8,7 @@
     </div>
        
 </div>
-<div class='container mx-auto'>
+<div class='container mx-auto mb-4'>
 @foreach($data as $item)
     @switch($item->style) 
         @case('vertical')

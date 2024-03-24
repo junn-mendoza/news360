@@ -15,7 +15,9 @@ function updateTimeDifference() {
         const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
         // Format time difference into string
-        const formattedTimeDifference = `${days} days ${hours} hours ${minutes} min ${seconds} sec ago`;
+        const formattedTimeDifference = `${hours}h ${minutes}m ${seconds}s ago`;
+        //const formattedTimeDifference = `${days} days ${hours} hours ${minutes} min ${seconds} sec ago`;
+
 
         // Update innerHTML of datetime element
         element.innerHTML = formattedTimeDifference;

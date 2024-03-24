@@ -1,8 +1,9 @@
+<a href='/news/{{ $component->id}}'>
 <div class='flex flex-col border-box bg-white'>
     <div class='h-[212px] overflow-hidden flex-none w-full '>
         <img src="{{ $component->files[0]->url }}" class='object-cover w-full h-full'/>
     </div>
-    <div class ='px-2 overflow-hidden font-fraunces text-xl  py-2  h-[70px] '>
+    <div class ='px-2 overflow-hidden font-fraunces text-xl  py-2  h-[70px] hover:text-gray-400'>
         <div class='line-clamp-3'>
             {{ $component->title}}
         </div>
@@ -18,3 +19,4 @@
         
     </div>
 </div>
+</a>

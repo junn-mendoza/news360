@@ -9,7 +9,7 @@
             @include('partials.home.video')
         </div>
         <div class='bg-transparent w-1/4'>
-            @include('partials.home.topnews')
+            @include('partials.components.topnews',['components' => $data['TOPNEWS'], 'withHeader' => true, 'withScroll' => true])
         </div>
     </div>
 <div class='container mx-auto'>

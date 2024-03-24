@@ -40,7 +40,7 @@ class Helper {
         $seconds = $timeDifference->s;
 
         // Format the time difference string
-        $formattedTimeDifference = "{$minutes} min {$seconds} sec ago";
+        $formattedTimeDifference = "{$minutes}m {$seconds}s ago";
 
         return $formattedTimeDifference;
     }

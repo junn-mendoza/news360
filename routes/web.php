@@ -20,3 +20,5 @@ Route::get('/', [TestController::class,'index']);
 Route::get('/news', [NewsController::class,'index']);
 
 Route::get('/entertainment', [EntertainmentController::class,'index']);
+
+Route::get('/news/{id}', [NewsController::class,'show']);

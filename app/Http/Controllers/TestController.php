@@ -34,7 +34,7 @@ class TestController extends Controller
 
     public function index()
     {
-
+        $this->ids = [7258, 7257, 7251,7161, 7061, 7611, 7585 ];
         Cache::forget('HOMEPAGE');
         if (Cache::has('HOMEPAGE')) {
             $this->data = Cache::get('HOMEPAGE');
@@ -48,8 +48,13 @@ class TestController extends Controller
             Category::make($this->articleService)
                 ->getDataResource($catGroup, $this->data, $this->ids);
  
-            News::make($this->articleService)
-                ->getDataResource($this->data, $this->ids);
+            $news = News::make($this->articleService)
+                ->getDataResource($this->ids,100);
+
+            $this->data['OTHERNEWS'] = $news->splice(0, 24);
+            $this->data['LATESTNEWS'] = $news->splice(0, 24);
+            
+            $this->data['TOPNEWS'] = $news;       
 
             Series::make()->getDataResource($this->data);
 

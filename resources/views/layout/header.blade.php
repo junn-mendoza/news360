@@ -6,10 +6,10 @@
             </a>
             <ul class="hidden space-x-4 md:flex">
                 <li class="px-2 py-2 text-gray-300 dark:text-gray-900 font-semibold  font-montserrat">
-                    <Link href="/news" class='hover:font-semibold'>NEWS</Link>
+                    <a  href="/news" class='hover:text-gray-500'>NEWS</a>
                 </li>
                 <li class="px-2 py-2 text-gray-300 dark:text-gray-900 font-semibold font-montserrat">
-                    <Link href="/entertainment" class='hover:font-semibold'>ENTERTAINMENT</Link>
+                    <a href="/entertainment" class='hover:text-gray-500'>ENTERTAINMENT</a>
                 </li>
             </ul>
             <a href="/eaglefm955" class='hover:font-semibold flex items-center bg-gray-300 border-opacity-40 border-gray-500 border-solid border-2 py-1 px-5 rounded-full'>

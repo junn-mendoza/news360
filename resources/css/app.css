@@ -94,6 +94,11 @@ body {
     background: linear-gradient(180deg, rgba(255,255,255,0) 0%,rgba(0,0,0,0.6)  60%, rgba(0,0,0,0.8)  80%,  rgba(0,0,0,1) 100%);
 }
 
+.overlay-black25 {
+  background: transparent;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%,rgba(0,0,0,0.4)  60%, rgba(0,0,0,0.6)  80%,  rgba(0,0,0,0.7) 100%);
+}
+
 .overlay-black {
     background: transparent;
     background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(78,78,78,0.5) 71%, rgba(0,0,0,1) 100%);
@@ -204,6 +209,34 @@ body {
     
 }
 
+.x1 {
+    display: flex;
+    margin:25px 0px 35px;
+    overflow:hidden;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 10px 10px 15px 0px #e1e1e1;
+    border-style: solid;
+  border-color: #e1e1e1;
+}
+.x1 .x1image {
+    width: 40%;
+    margin: 20px;
+    border-radius: 10px;
+    overflow:hidden;
+    height: 100%;
+    box-shadow: 10px 10px 5px 0px #e1e1e1
+    
+} 
+.x1 .x1text {
+    width: 60%;
+    margin: 20px 25px 20px 10px;
+    font-family: fraunces;
+    font-style: italic;
+    font-size: x-large;
+    line-height: 35px;
+    
+}
 /* styles/globals.css */
 /* @keyframes scroll {
     from {

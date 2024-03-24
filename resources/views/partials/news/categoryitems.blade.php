@@ -1,4 +1,5 @@
 <div class='flex-col  rounded-xl overflow-hidden shadow-md my-2'>
+    <a href='/news/{{ $component[0]->id }}'>
     <div class='flex '>
         <div class='h-[336px] w-full'>
             @if($component[0]->files)
@@ -9,8 +10,10 @@
         </div>
         
     </div>
+    </a>
     <div class='px-2 '>
         @foreach($component as $item)
+        <a href='/news/{{ $item->id }}'>
         <div class='flex justify-between border border-b-2 border-b-slate-300'>
             <div class='p-2 font-montserrat w-[90%] text-md min-h-[90px] font-bold'>
                 <div class='line-clamp-3'>
@@ -19,6 +22,7 @@
             </div>
             <div class='w-8 h-8 items-center m-3'>@include('partials.components.link',['color' => $color])</div>
         </div>
+        </a>
         @endforeach
         <div class='flex justify-end mr-3'>
             <div style='background-color:{{ $color }}' class='flex items-center space-x-3 rounded-full  m-1 pb-1 px-3 text-white my-2'>
