@@ -4,12 +4,10 @@ namespace App\Http\Controllers\News;
 
 use App\Tools\Helper;
 use App\Tools\DBHelper\Category as CategoryRepository;
-use App\Models\Category;
 use App\Tools\DBHelper\News;
 use App\Enums\CategoryEnum;
 use Illuminate\Http\Request;
 use App\Services\ArticleService;
-use App\Http\Resources\CategoryResource;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\News\Init;
 
