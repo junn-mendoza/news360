@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Tools\DBHelper;
 
 use App\Http\Resources\ScheduleResource;
 use App\Services\LiveService;

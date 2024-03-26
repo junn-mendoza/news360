@@ -1,5 +1,5 @@
 <?php
-namespace App\Repositories;
+namespace App\Tools\DBHelper;
 use App\Models\Series as SeriesModel;
 use App\Http\Resources\SeriesResource;
 class Series extends Base

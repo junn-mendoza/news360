@@ -1,5 +1,5 @@
 <?php 
-namespace App\Repositories;
+namespace App\Tools\DBHelper;
 
 use App\Models\BannerSlider;
 use App\Http\Resources\BannerSliderResource;

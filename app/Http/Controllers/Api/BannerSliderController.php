@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\BannerSlider;
 use Illuminate\Http\Request;
 use App\Http\Resources\BannerSliderResource;
 use App\Http\Requests\StoreBannerSliderRequest;
+use App\Http\Controllers\Controller;
 
 class BannerSliderController extends Controller
 {

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Series;
 use Illuminate\Http\Request;
 use App\Http\Resources\SeriesResource;
+use App\Http\Controllers\Controller;
 
 class SeriesController extends Controller
 {

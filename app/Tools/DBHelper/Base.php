@@ -1,6 +1,6 @@
 <?php
-namespace App\Repositories;
-class Base 
+namespace App\Tools\DBHelper;
+abstract class Base 
 {
     /**
      * Create a new resource instance.

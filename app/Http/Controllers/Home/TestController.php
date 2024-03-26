@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Home;
 
-use App\Repositories\Banner;
-use App\Repositories\News;
-use App\Repositories\Category;
-use App\Repositories\Live;
-use App\Repositories\Programs;
-use App\Repositories\Series;
+use App\Tools\DBHelper\News;
+use App\Tools\DBHelper\Category;
+use App\Tools\DBHelper\Live;
+use App\Tools\DBHelper\Programs;
+use App\Tools\DBHelper\Series;
 
 use App\Enums\CategoryEnum;
-use App\Enums\PageEnum;
 use App\Services\ArticleService;
 use App\Services\BannerService;
 use App\Services\LiveService;
 use Illuminate\Support\Facades\Cache;
+use App\Http\Controllers\Controller;
 
 class TestController extends Controller
 {
@@ -35,7 +34,6 @@ class TestController extends Controller
     public function index()
     {
         $this->ids = [7258, 7257, 7251,7161, 7061, 7611, 7585 ];
-        Cache::forget('HOMEPAGE');
         if (Cache::has('HOMEPAGE')) {
             $this->data = Cache::get('HOMEPAGE');
         } else {
@@ -63,12 +61,6 @@ class TestController extends Controller
             $liveService = app(LiveService::class); // Resolve the Live repository from the service container
             Live::make()->getDataResource($liveService, $this->data);
           
-            //dd(collect($this->data['LIVE'][0])->pluck('files')->toArray()[0]->url); 
-            //Live::make()->getDataResource($this->data);
-            // $this->data['BANNER'] = $this->bannerService->customizeBanner(
-            //     Banner::make()
-            //         ->getDataResource($this->data, PageEnum::HOMEPAGE)
-            //     );
             Cache::add('HOMEPAGE',$this->data, 15 );
         }
         $this->data['BANNER'][] = [

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Resources\ScheduleResource;
 use App\Services\LiveService;
+use App\Http\Controllers\Controller;
 
 class ScheduleController extends Controller
 {

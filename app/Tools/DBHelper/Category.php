@@ -1,5 +1,5 @@
 <?php
-namespace App\Repositories;
+namespace App\Tools\DBHelper;
 use App\Http\Resources\ArticleResource;
 use App\Services\ArticleService;
 use RepositoryInterface;

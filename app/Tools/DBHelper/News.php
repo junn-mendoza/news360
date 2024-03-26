@@ -1,5 +1,5 @@
 <?php
-namespace App\Repositories;
+namespace App\Tools\DBHelper;
 
 use App\Models\Article;
 use App\Services\ArticleService;

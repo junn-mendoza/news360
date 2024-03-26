@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Article;
 use App\Http\Resources\ArticleResource;
 use App\Services\ArticleService;
+use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {

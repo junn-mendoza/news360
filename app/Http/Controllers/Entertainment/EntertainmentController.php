@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Entertainment;
 
 use Illuminate\Http\Request;
 use App\Models\Entertainment;
 use App\Http\Resources\EntertainmentResource;
+use App\Http\Controllers\Controller;
 
 class EntertainmentController extends Controller
 {
