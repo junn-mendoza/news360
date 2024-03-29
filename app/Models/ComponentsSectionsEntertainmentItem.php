@@ -10,16 +10,7 @@ class ComponentsSectionsEntertainmentItem extends Model
     use HasFactory;
                         
     protected $table = 'components_sections_entertaintment_items';
-    // public function entertainment()
-    // {
-    //     return $this->belongsTo(EntertainmentComponent::class);
-    // }
-
-    // public function file()
-    // {
-    //     return $this->morphTo();
-    // }
-
+    
      /**
      * Get the articles associated with the category.
      */

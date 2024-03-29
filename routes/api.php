@@ -23,7 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('news360key')->group(function () {
-    //Route::get('/bannerslider/{location}',[BannerSliderController::class,'slider']);
         // Your routes here...
     Route::get('/main',[MainController::class, 'index']); 
     Route::get('/entertainment',[EntertainmentController::class, 'index']); 
