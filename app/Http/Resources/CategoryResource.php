@@ -16,9 +16,8 @@ class CategoryResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
-            CategoryDTO::fromResource($this)
-        ];
+        return CategoryDTO::fromResource($this)->toArray();
+        
     }
     
 }

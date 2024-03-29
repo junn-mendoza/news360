@@ -2,7 +2,6 @@
 namespace App\Tools\DBHelper;
 use App\Http\Resources\ArticleResource;
 use App\Services\ArticleService;
-use RepositoryInterface;
 
 class Category extends Base 
 {
@@ -21,9 +20,11 @@ class Category extends Base
         $this->limit = $filterLimit ?? $this->limit;
         $this->data = $data;
         $this->ids = $ids;
+       
         foreach($catGroup as $key=>$value) {
             $this->newsSlider($key,$value, $this->ids);
         }
+       
         $this->data['newsSlider']['CATEGORY'] = $catGroup;
         $data = $this->data;
         $ids = $this->ids;
@@ -31,7 +32,7 @@ class Category extends Base
     
     private function newsSlider($key,$value, $ids = null)
     {
-        $query = $this->articleService->getArticles($this->limit, $value, $ids);
+         $query = $this->articleService->getArticles($this->limit, $value, $ids);
       
         $category = ArticleResource::collection($query);
         $this->data['newsSlider'][$key] = $category;

@@ -31,4 +31,18 @@ class CategoryDTO
             updated_at: Carbon::parse($resource->updated_at),
         );
     }
+
+    // Implement toArray method from Arrayable interface
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'color' => $this->color,
+            'slug' => $this->slug,
+            'showmenu' => $this->showmenu,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+        ];
+    }
 }

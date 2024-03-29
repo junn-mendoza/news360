@@ -24,4 +24,18 @@ class FileDTO
         );
        
     }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'url' => $this->url,
+            'width' => $this->width,
+            'height' => $this->height,
+            'mime' => $this->mime,
+
+        ];
+    }
+
+
 }

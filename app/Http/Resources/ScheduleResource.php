@@ -16,15 +16,13 @@ class ScheduleResource extends JsonResource
      * @return array<string, mixed>
      */
     public function toArray(Request $request): array
-    {
-       
-        return [
+    {       
+        return 
             ScheduleDTO::fromResource(
                 $this,                
                 FileResource::make($this->livestreamLink->filesRelatedMorph->file),
                 LiveResource::make($this->livestreamLink->live),
-            )
-        ];
+            )->toArray();
        
         
     }

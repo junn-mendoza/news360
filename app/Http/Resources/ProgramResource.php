@@ -15,11 +15,9 @@ class ProgramResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
-            ProgramDTO::fromResource(
-                $this,
-                FileResource::collection($this->whenLoaded('files'))
-            )
-        ];
+        return ProgramDTO::fromResource(
+            $this,
+            FileResource::collection($this->whenLoaded('files'))
+        )->toArray();
     }
 }

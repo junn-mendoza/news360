@@ -46,4 +46,26 @@ class ProgramDTO
             files: $files
         );
     }
+
+    public function toArray(): array 
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'description' => $this->description,
+            'slug' => $this->slug,
+            'director' => $this->director,
+            'producer' => $this->producer,
+            'ratings' => $this->ratings,
+            'timeslot' => $this->timeslot,
+            'url' => $this->url,
+            'location' => $this->location,
+            'genre' => $this->genre,
+            'name' => $this->name,
+            'character' => $this->character,
+            'playlist' => $this->playlist,
+            'enabled' => $this->enabled,
+            'files' => $this->files
+        ];
+    }
 }

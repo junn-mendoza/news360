@@ -15,8 +15,6 @@ class FileResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
-           FileDTO::fromResource($this)   
-        ];
+        return FileDTO::fromResource($this)->toArray();
     }
 }

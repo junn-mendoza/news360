@@ -19,4 +19,12 @@ class BannerSliderComponentDTO
         );
        
     }
+
+    public function toARray(): array 
+    {
+        return [
+            'component' => $this->component,
+            'files' => $this->files,
+        ];
+    }
 }

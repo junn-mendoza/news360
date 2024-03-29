@@ -1,10 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\News\NewsController;
-use App\Http\Controllers\Home\TestController;
-use App\Http\Controllers\News\DetailController;
-use App\Http\Controllers\Entertainment\EntertainmentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,10 +13,3 @@ use App\Http\Controllers\Entertainment\EntertainmentController;
 |
 */
 
-Route::get('/', [TestController::class,'index']);
-
-Route::get('/news', [NewsController::class,'index']);
-
-Route::get('/entertainment', [EntertainmentController::class,'index']);
-
-Route::get('/news/{id}', [DetailController::class,'show']);

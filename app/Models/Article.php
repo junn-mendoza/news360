@@ -65,7 +65,7 @@ class Article extends Model
      * Convert the date to formatted Value
      *  example 10 mins 3 sec ago
      */
-    public function getTImeStringAttribute()
+    public function getTimeStringAttribute()
     {
           
         return Helper::updateTimeDifference($this->date);

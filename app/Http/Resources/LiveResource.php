@@ -15,8 +15,6 @@ class LiveResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
-           LiveDTO::fromResource($this)   
-        ];
+        return LiveDTO::fromResource($this)->toArray();
     }
 }

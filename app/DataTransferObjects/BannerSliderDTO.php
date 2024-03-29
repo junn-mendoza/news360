@@ -21,4 +21,14 @@ class BannerSliderDTO
         );
        
     }
+
+    // Implement toArray method from Arrayable interface
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'slider' => $this->slider            
+        ];
+    }
 }

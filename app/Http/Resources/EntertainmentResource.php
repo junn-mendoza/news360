@@ -15,13 +15,11 @@ class EntertainmentResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
-            EntertainmentDTO::fromResource(
+        return EntertainmentDTO::fromResource(
                 $this, 
-                ComponentsSectionsEntertainmentItemResource::collection($this->whenLoaded('items')),
-                //FileResource::collection($this->whenLoaded('items.files'))
-            )
+                ComponentsSectionsEntertainmentItemResource::collection($this->whenLoaded('items'))       //FileResource::collection($this->whenLoaded('items.files'))
+            )->toArray();
             //'section' => new ComponentSectionEntertainmentItemResource($this->section),
-        ];
+        
     }
 }

@@ -67,32 +67,27 @@ class ArticleService
     }
     private function getLatestArticlesByCategories($limit = 10, $ids = null, $included = [])
     {
-        
-         
         $articleCategory = ArticleCategory::query();    
-
+        $ids = array_filter($ids);
         $orderIds = $articleCategory
             ->ByDemand($ids ?? [], $included)
             ->limit($limit)->get();
-
+      
         $generateIds = $orderIds->pluck('article_id')->toArray();  
         return $generateIds;
     }
 
     public function getArticle($id)
-    {
+    {   $field = is_int($id)?'id':'slug';
         return Article::with(['files','categories'])
-                  ->where('id',$id)->get(); 
+                  ->where($field,$id)->get(); 
 
     }
     public function getArticles($limit = null, $category_ids = null, $ids = null)
-    {    
-        // $trace = debug_backtrace();
-        // $caller = $trace[1]['function']; // Get the name of the calling function
-        // dump($limit);
-        // dd($caller);
+    {   
         $category_ids = !is_null($category_ids) && !is_array($category_ids)
             ? explode(',', $category_ids) : $category_ids;
+    
         $orderIds = $this->getLatestArticlesByCategories($limit,$ids,$category_ids);
        
         $query = Article::query();
@@ -104,7 +99,7 @@ class ArticleService
         $query->OrderedByIdArray($orderIds);
         
         $article = $query->inRandomOrder()->get();
-        
+  
         return $article;
     }
 }

@@ -27,4 +27,14 @@ class EntertainmentDTO
          
         );
     }
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'header' => $this->header,
+            'style' => $this->style,
+            'order' => $this->order,
+            'items' => $this->items,
+        ];
+    }
 }

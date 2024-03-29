@@ -14,12 +14,28 @@ class LiveDTO
 
     public static function fromResource(JsonResource $resource): self
     {
+        if ($resource !== null) {
+            $isStreaming = $resource->streaming ?? false;
+        } else {
+            // Handle the case where $resource is null
+            $isStreaming = false;
+        }
         return new self(
             title: $resource->title ?? '',
             content: $resource->content ?? '',
             yt_playlist: $resource->yt_playlist ?? '',
-            streaming: (bool) $resource->streaming ?? false,
+            streaming: $isStreaming,
         );
-    }   
+    }  
+    
+    public function toArray(): array
+    {
+        return [
+            'title' => $this->title,
+            'content' => $this->content,
+            'yt_playlist' => $this->yt_playlist,
+            'streaming' => $this->streaming,
+        ];
+    }
    
 }

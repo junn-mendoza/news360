@@ -15,11 +15,10 @@ class SeriesResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [ 
+        return  
             SeriesDTO::fromResource(
                 $this,
                 FileResource::collection($this->whenLoaded('files'))
-            )
-        ];
+            )->toArray();
     }
 }

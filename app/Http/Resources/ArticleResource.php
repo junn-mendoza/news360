@@ -18,14 +18,17 @@ class ArticleResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
-            ArticleDTO::fromResource(
-                $this,
-                CategoryResource::collection($this->whenLoaded('categories')),
-                FileResource::collection($this->whenLoaded('files'))
+       
+        $articleData = ArticleDTO::fromResource(
+            $this,
+            CategoryResource::collection($this->whenLoaded('categories'))->toArray($request),
+            FileResource::collection($this->whenLoaded('files'))->toArray($request),
 
-            )
-         ];
+        );
+
+        return $articleData->toArray();
+            
+         
         
 
     }
