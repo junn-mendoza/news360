@@ -9,6 +9,10 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+### News360 Front-end
+
+<a href="https://github.com/junn-mendoza/news360-frontend" alt="Api Repositories">News360 Front-end Repositories</a>
+
 ## Enhancing API Security with News360ApiKey Middleware in Laravel
 
 This PHP middleware, News360ApiKey, serves to authenticate incoming requests by verifying the API key sent in the header (x-api-key) against the expected API key configured in the application, thereby preventing unauthorized access to protected resources. It returns a JSON response with an "Unauthorized" error and a status code of 401 if the API key doesn't match, ensuring robust protection against unauthorized access. Utilizing configuration for storing sensitive information like API keys, it implements a basic yet effective form of authentication. However, to bolster security, complementary measures such as secure transmission over HTTPS, input validation, rate limiting, and logging should be implemented, while staying vigilant against emerging threats and vulnerabilities.
